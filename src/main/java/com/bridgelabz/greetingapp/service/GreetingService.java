@@ -42,4 +42,10 @@ public class GreetingService {
     public List<Greeting> getAllGreetings() {
         return greetingRepository.findAll();
     }
+
+    public Greeting updateGreeting(Long id, String message) {
+        Greeting greeting = findGreetingById(id);
+        greeting.setMessage(message);
+        return greetingRepository.save(greeting);
+    }
 }
