@@ -55,4 +55,9 @@ public class GreetingController {
             @RequestParam(required = false) String lastName) {
         return greetingService.saveGreeting(firstName, lastName);
     }
+
+    @GetMapping("/{id}")
+    public Greeting findGreetingById(@PathVariable Long id) {
+        return greetingService.findGreetingById(id);
+    }
 }
