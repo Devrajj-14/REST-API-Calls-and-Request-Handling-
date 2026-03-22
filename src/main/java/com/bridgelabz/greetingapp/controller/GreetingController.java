@@ -1,5 +1,6 @@
 package com.bridgelabz.greetingapp.controller;
 
+import com.bridgelabz.greetingapp.model.Greeting;
 import com.bridgelabz.greetingapp.service.GreetingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -46,5 +47,12 @@ public class GreetingController {
         response.put("method", "DELETE");
         response.put("message", greetingService.getGreeting());
         return response;
+    }
+
+    @PostMapping("/save")
+    public Greeting saveGreeting(
+            @RequestParam(required = false) String firstName,
+            @RequestParam(required = false) String lastName) {
+        return greetingService.saveGreeting(firstName, lastName);
     }
 }
